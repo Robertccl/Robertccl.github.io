@@ -87,17 +87,17 @@
 
 
 
-<meta name="description" content="Qt 开发–踩坑记1.Qthread 线程的使用注意套路，套路很简单  继承之后，实现自己的线程类，重写run函数 在主界面开启线程时直接调用start（）函数会自动调用run函数，run注意小写，注意小写，注意小写 如果调用线程类中其他公有函数，则相当于在当前线程执行，并不会重新开启一个线程在后台运行，该点一定注意 开启线程时，在qt creatorIDE下debug模式不能运行，必须是rele">
+<meta name="description" content="Qt 开发–踩坑记1.Thread线程的使用注意套路，套路很简单 继承之后，实现自己的线程类，重写run函数 在主界面开启线程时直接调用start（）函数会自动调用run函数，run注意小写，注意小写，注意小写 如果调用线程类中其他公有函数，则相当于在当前线程执行，并不会重新开启一个线程在后台运行，该点一定注意 开启线程时，在qt creatorIDE下debug模式不能运行，必须是release">
 <meta name="keywords" content="Qt 开发">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Qt 踩坑记">
 <meta property="og:url" content="http://yoursite.com/2017/04/04/Qt-踩坑记/index.html">
 <meta property="og:site_name" content="CCL">
-<meta property="og:description" content="Qt 开发–踩坑记1.Qthread 线程的使用注意套路，套路很简单  继承之后，实现自己的线程类，重写run函数 在主界面开启线程时直接调用start（）函数会自动调用run函数，run注意小写，注意小写，注意小写 如果调用线程类中其他公有函数，则相当于在当前线程执行，并不会重新开启一个线程在后台运行，该点一定注意 开启线程时，在qt creatorIDE下debug模式不能运行，必须是rele">
-<meta property="og:updated_time" content="2017-04-04T12:53:53.175Z">
+<meta property="og:description" content="Qt 开发–踩坑记1.Thread线程的使用注意套路，套路很简单 继承之后，实现自己的线程类，重写run函数 在主界面开启线程时直接调用start（）函数会自动调用run函数，run注意小写，注意小写，注意小写 如果调用线程类中其他公有函数，则相当于在当前线程执行，并不会重新开启一个线程在后台运行，该点一定注意 开启线程时，在qt creatorIDE下debug模式不能运行，必须是release">
+<meta property="og:updated_time" content="2017-04-08T03:13:19.079Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Qt 踩坑记">
-<meta name="twitter:description" content="Qt 开发–踩坑记1.Qthread 线程的使用注意套路，套路很简单  继承之后，实现自己的线程类，重写run函数 在主界面开启线程时直接调用start（）函数会自动调用run函数，run注意小写，注意小写，注意小写 如果调用线程类中其他公有函数，则相当于在当前线程执行，并不会重新开启一个线程在后台运行，该点一定注意 开启线程时，在qt creatorIDE下debug模式不能运行，必须是rele">
+<meta name="twitter:description" content="Qt 开发–踩坑记1.Thread线程的使用注意套路，套路很简单 继承之后，实现自己的线程类，重写run函数 在主界面开启线程时直接调用start（）函数会自动调用run函数，run注意小写，注意小写，注意小写 如果调用线程类中其他公有函数，则相当于在当前线程执行，并不会重新开启一个线程在后台运行，该点一定注意 开启线程时，在qt creatorIDE下debug模式不能运行，必须是release">
 
 
 
@@ -322,14 +322,28 @@
       
 
       
-        <h3 id="Qt-开发–踩坑记"><a href="#Qt-开发–踩坑记" class="headerlink" title="Qt 开发–踩坑记"></a>Qt 开发–踩坑记</h3><p>1.Qthread 线程的使用注意套路，套路很简单</p>
-<ol>
+        <h3 id="Qt-开发–踩坑记"><a href="#Qt-开发–踩坑记" class="headerlink" title="Qt 开发–踩坑记"></a>Qt 开发–踩坑记</h3><h4 id="1-Thread线程的使用注意套路，套路很简单"><a href="#1-Thread线程的使用注意套路，套路很简单" class="headerlink" title="1.Thread线程的使用注意套路，套路很简单"></a>1.Thread线程的使用注意套路，套路很简单</h4><ol>
 <li>继承之后，实现自己的线程类，重写run函数</li>
 <li>在主界面开启线程时直接调用start（）函数会自动调用run函数，run注意小写，注意小写，注意小写</li>
 <li><strong>如果调用线程类中其他公有函数，则相当于在当前线程执行，并不会重新开启一个线程在后台运行，该点一定注意</strong></li>
 <li>开启线程时，在qt creatorIDE下<strong>debug模式不能运行</strong>，必须是<strong>release模式</strong>才可以，但是vs装了Qt插件之后就可以调试线程了 (本人vs2015)</li>
 </ol>
-<p>2.Qt 信号槽机制真的是神器，可以实现线程通信，跨线程也可以使用，所以非常好</p>
+<h4 id="2-Qt信号槽机制真的是神器，可以实现线程通信，跨线程也可以使用，所以非常好-有关信号槽的理解与使用，推荐两篇博客Qt实现多线程下的信号与通讯和信号槽机制浅析"><a href="#2-Qt信号槽机制真的是神器，可以实现线程通信，跨线程也可以使用，所以非常好-有关信号槽的理解与使用，推荐两篇博客Qt实现多线程下的信号与通讯和信号槽机制浅析" class="headerlink" title="2.Qt信号槽机制真的是神器，可以实现线程通信，跨线程也可以使用，所以非常好,有关信号槽的理解与使用，推荐两篇博客Qt实现多线程下的信号与通讯和信号槽机制浅析"></a>2.Qt信号槽机制真的是神器，可以实现线程通信，跨线程也可以使用，所以非常好,有关信号槽的理解与使用，推荐两篇博客<a href="http://www.cnblogs.com/dada-911911/p/3711456.html" target="_blank" rel="external">Qt实现多线程下的信号与通讯</a>和<a href="http://blog.csdn.net/harbinzju/article/details/10813635" target="_blank" rel="external">信号槽机制浅析</a></h4><p>其中关于信号槽的的理解非常有帮助</p>
+<h4 id="3-Qt摄像头有好几种方法，见下："><a href="#3-Qt摄像头有好几种方法，见下：" class="headerlink" title="3.Qt摄像头有好几种方法，见下："></a>3.Qt摄像头有好几种方法，见下：</h4><ul>
+<li><p>使用phonon，不过据说Qt5对其已经不太支持</p>
+</li>
+<li><p>使用Qt自带的MultiMedia模块</p>
+</li>
+<li><p>使用openCV</p>
+<p>openCV乃真神器，使用方便，只需在pro文件中引入openCV的头文件和lib文件即可</p>
+</li>
+</ul>
+<h4 id="4-Qt在label上显示图片，并在图片上画框"><a href="#4-Qt在label上显示图片，并在图片上画框" class="headerlink" title="4.Qt在label上显示图片，并在图片上画框"></a>4.Qt在label上显示图片，并在图片上画框</h4><p><strong><em>这个东西困扰自己两天，究其原因不过是对Qt的不了解，其中的事件机制，自定义控件的方法，继承控件，实现自己功能并在ui中使用自己修改过的控件的方法等等</em></strong></p>
+<ol>
+<li>首先Qt的事件机制需要好好了解，推荐几篇博客吧<a href="http://m.blog.csdn.net/article/details?id=51490692" target="_blank" rel="external">事件处理机制以及QLabel的交互实现</a>和<a href="http://blog.csdn.net/chenlong12580/article/details/7720365" target="_blank" rel="external">Qt中事件处理的方法</a></li>
+<li>引用最后帮我解决问题的一本书上的一句话：<strong><em>在Qt设计师中使用自定义的窗口部件，我们必须让Qt设计师先察觉到它的存在，有两种方法可以玩策划能这一任务:<em>改进法(promotion)和插件法(plugin)</em></em></strong>(这个地方着实是令我困惑最近的地方)</li>
+<li>一篇非常好的博客，虽然讲的不详细，但是对的<a href="http://www.ithao123.cn/content-8674635.html" target="_blank" rel="external">qt中在QLabel上显示图片，并用鼠标在上面画框</a></li>
+</ol>
 
       
     </div>
@@ -504,7 +518,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Qt-开发–踩坑记"><span class="nav-number">1.</span> <span class="nav-text">Qt 开发–踩坑记</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Qt-开发–踩坑记"><span class="nav-number">1.</span> <span class="nav-text">Qt 开发–踩坑记</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Thread线程的使用注意套路，套路很简单"><span class="nav-number">1.1.</span> <span class="nav-text">1.Thread线程的使用注意套路，套路很简单</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Qt信号槽机制真的是神器，可以实现线程通信，跨线程也可以使用，所以非常好-有关信号槽的理解与使用，推荐两篇博客Qt实现多线程下的信号与通讯和信号槽机制浅析"><span class="nav-number">1.2.</span> <span class="nav-text">2.Qt信号槽机制真的是神器，可以实现线程通信，跨线程也可以使用，所以非常好,有关信号槽的理解与使用，推荐两篇博客Qt实现多线程下的信号与通讯和信号槽机制浅析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Qt摄像头有好几种方法，见下："><span class="nav-number">1.3.</span> <span class="nav-text">3.Qt摄像头有好几种方法，见下：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Qt在label上显示图片，并在图片上画框"><span class="nav-number">1.4.</span> <span class="nav-text">4.Qt在label上显示图片，并在图片上画框</span></a></li></ol></li></ol></div>
             
 
           </div>
