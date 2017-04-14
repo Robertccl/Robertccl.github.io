@@ -259,6 +259,126 @@
   
   
 
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/14/Alphago-学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chen cunliang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/ccl.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CCL">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/14/Alphago-学习/" itemprop="url">
+                  Alphago--学习
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-14T15:24:03+08:00">
+                2017-04-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
   <article class="post post-type-categories " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/08/categories/">
 
@@ -722,6 +842,24 @@
 <ol>
 <li>faster-rcnn</li>
 <li>fast-rcnn</li>
+</ol>
+<h4 id="RCNN-gt-Fast-RCNN-gt-Faster-RCNN"><a href="#RCNN-gt-Fast-RCNN-gt-Faster-RCNN" class="headerlink" title="RCNN-&gt;Fast-RCNN-&gt;Faster-RCNN"></a>RCNN-&gt;Fast-RCNN-&gt;Faster-RCNN</h4><p>  <strong>RCNN</strong></p>
+<ol>
+<li>提取特佂–在原图基础上用ss提取2000个特征框，然后将这2000个框送入卷积层，进行卷积计算，提取特征</li>
+<li>分类–svm分类器，训练svm模型</li>
+<li>使用回归器<strong>精细修正</strong>候选框位置</li>
+</ol>
+<p><strong>Fast-RCNN</strong></p>
+<ol>
+<li>提取特征–在rcnn的基础上进行改进，不是将2000个特征框送入卷积层进行特征提取，而是直接将整张图送入卷积网络，然后根据ss提取的2000个特征框，在原图卷积后得到的特征图上进行映射，直接提取2000个特征，大大提高了计算速度</li>
+<li>分类–网络参数训练，网络直接输出各类概率(<strong>softmax</strong>)，比SVM分类器性能略好 </li>
+<li>调整位置</li>
+</ol>
+<p><strong>Faster-RCNN</strong></p>
+<ol>
+<li>提取特征–在fast-rcnn基础上，吸取其提取特征慢的教训，进一步提升速度，做到实时检测，提出一个新东西叫RPN，和分类器交替训练，RPN用于提取特征，不在卷积层外提取框在做映射，而是直接在原图得到的feature map 基础上进行特征提取，省去了前期提取特征框的时间，大大加快速度，使所有操作都在网络内完成，实现端到端</li>
+<li>分类–网络参数训练，将分类的网络和RPN网络交替训练，最终直接得到分类结果</li>
+<li>调整位置</li>
 </ol>
 
           
@@ -1210,7 +1348,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
